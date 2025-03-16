@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KioskInk</title>
+    <style>
+        /* General Page Styling */
+        body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #f4f4f4, #e2e8f0);
+}
+
+/* Title Styling */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    color: #000000;
+}
+
+/* Layout Container */
+.container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 80vh;
+    background: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Left Side: Drawing Interface */
+.left-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #ddd;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+/* Button Styling */
+button {
+    margin-top: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+h1, h2 {
+    line-height: 0.1; /* Adjust as needed */
+}
+button:hover {
+    background: linear-gradient(90deg, #0056b3, #00408a);
+    transform: scale(1.05);
+}
+
+/* Right Side: Product Display */
+.right-side {
+    width: 50%;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+/* Product List Styling */
+/* Product List Styling */
+#product-list {
+    list-style: none;
+    padding: 0;
+}
+
+.product-item {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Hover Effect on Product Description */
+.product-item:hover {
+    background: #e2e8f0;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transform: scale(1.02);
+}
+
+/* Product Description Emphasis on Hover */
+.product-item:hover strong {
+    color: #ff4500; /* Highlighting with a distinct color */
+    font-size: 19px;
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Product Description Emphasis on Hover */
+.product-item:hover strong {
+    color: #55052c;
+    text-decoration: underline;
+}
+    </style>
+    <script>
+        function loadProducts() {
+            fetch("/get_products")   
+                .then(response => response.json())
+                .then(data => {
+                    let productList = document.getElementById("product-list");
+                    productList.innerHTML = ""; // Clear old results
+    
+                    if (data.products.length === 0) {
+                        productList.innerHTML = "<li>No matching products found.</li>";
+                    } else {
+                        data.products.forEach(product => {
+                            let item = document.createElement("li");
+                            item.classList.add("product-item"); // ADD THIS LINE
+                            item.innerHTML = `
+                                <strong>${product.Description}</strong> <br>
+                                Stock Code: ${product.StockCode} <br>
+                                Quantity: ${product.Quantity} <br>
+                                Price: $${product.UnitPrice.toFixed(2)}
+                            `;
+                            productList.appendChild(item);
+                        });
+                    }
+                })
+                .catch(error => console.error("Error loading products:", error));
+        }
+    
+        window.onload = loadProducts;  // Load products when the page loads
+    </script>
+    
+</head>
+<body>
+
+    <h1>KioskVue</h1>
+    <h2>✨ Sketch It. Find It. Get It! ✨</h2>
+
+    <div class="container">
+        <!-- Left Side: AirWrite -->
+        <div class="left-side">
+            <h2>So, that's what you are looking for -</h2>
+            <canvas id="drawingCanvas" width="10" height="10"></canvas>
+            <img id="savedDrawing" src="../static/drawing.png" alt="Saved Drawing" style="margin-top: 0.5px; width: 500px; height: auto">
+            <button onclick="saveDrawing()">Done</button>
+        </div>
+
+        <!-- Right Side: Matching Products -->
+        <div class="right-side">
+            <h2>Matching Products</h2>
+            <p id="extracted-text">Here is what we have for you:</p>
+            <ul id="product-list"></ul>
+        </div>
+    </div>
+
+</body>
+</html>
