@@ -12,6 +12,8 @@ KioskVue is an AI-powered retail kiosk system that enhances the shopping experie
 - **Intuitive UI:** Simple, fast, and user-friendly kiosk interface.
 - **Efficient Image Processing:** Saves and processes handwritten input effectively.
 
+## View Live Project - https://www.youtube.com/watch?v=vEi8F5qhDlY
+
 ## Tech Stack
 
 - **Frontend:** HTML, CSS, JavaScript
