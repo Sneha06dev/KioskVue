@@ -18,6 +18,15 @@ KioskVue is an AI-powered retail kiosk system that enhances the shopping experie
 - **Backend:** Flask
 - **AI Integration:** Google Gemini API for token generation
 
+## Backend
+![Image](https://github.com/user-attachments/assets/6cdd1c62-b317-440b-bc93-2d21dc0c36e7)
+
+## Output
+![Image](https://github.com/user-attachments/assets/e4deca2b-fc2c-46b5-880f-f038823c06a6)
+
+## Write/Drawing Interface 
+![Image](https://github.com/user-attachments/assets/0cdc69f9-def9-4bc0-a2f6-f28e8c905598)
+
 ## Benefits
 
 KioskVue is designed to be an inclusive solution, particularly beneficial for:
