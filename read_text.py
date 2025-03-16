@@ -6,7 +6,7 @@ import base64
 from PIL import Image
 
 # Set your Gemini API Key
-genai.configure(api_key="AIzaSyAC-nkgnUKBNtE3qjVNN-3ORC9gpHn6XU4")
+genai.configure(api_key="GIVE YOUR OWN API KEY")
 
 def crop_image(image_path):
     """Crop everything below the color boxes (assume they take up ~70 pixels)."""
