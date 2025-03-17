@@ -27,7 +27,7 @@ KioskVue is an AI-powered retail kiosk system that enhances the shopping experie
 ![Image](https://github.com/user-attachments/assets/e4deca2b-fc2c-46b5-880f-f038823c06a6)
 
 ## Write/Drawing Interface 
-![Image](https://github.com/user-attachments/assets/0cdc69f9-def9-4bc0-a2f6-f28e8c905598)
+![Image](https://github.com/user-attachments/assets/593d9b97-6e8e-4c2f-aee3-eeda6e4267ff)
 
 ## Benefits
 
